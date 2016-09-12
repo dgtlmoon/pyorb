@@ -41,3 +41,9 @@ Example:
 ```
 
 The goal eventually is to be able to scan 10,000+ images in under 500ms (or less!)
+
+
+## Credits
+
+- Gil Levi @ http://gilscvblog.com for help understanding the features/descriptors in ORB and other systems
+ 
