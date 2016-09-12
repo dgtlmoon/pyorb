@@ -13,6 +13,7 @@ import numpy as np
 import cv2
 import pickle
 import os
+import json
 
 keypoints = 200
 
@@ -73,6 +74,7 @@ def search(img_str):
     for entry in p:
         x = match_descriptors(descriptor_extractor.descriptors, entry['descriptors'], cross_check=True)
         if(len(x)> 65):
-            print entry['id']
-            print len(x);
+            matches.append({'id': entry['id'], 'd' : len(x)})
+
+    return json.dumps(matches)
 

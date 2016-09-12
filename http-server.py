@@ -12,12 +12,9 @@ import orb_process_store
 class MyHandler(BaseHTTPRequestHandler):
     def do_PUT(self):
         print "----- SOMETHING WAS PUT!! ------"
-
         length = int(self.headers['Content-Length'])
         content = self.rfile.read(length)
 
-
-        #@todo get arg "?index=a...1" and pass to this function
         orb_process_store.processDescriptorsFromImage(content, self.path)
         self.send_response(200)
 
@@ -26,17 +23,13 @@ class MyHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         print "-- GOT POST--"
-        orb_process_store.search(self.rfile.read(int(self.headers.getheader('Content-Length'))))
+        result = orb_process_store.search(self.rfile.read(int(self.headers.getheader('Content-Length'))))
 
-#        print postvars
-        #@todo get arg "?index=a...1" and pass to this function
-        # so that multiple separate indexes can be contained in the case of band name etc
-
-        #length = int(self.headers['Content-Length'])
-#        orb_process_store.search(postvars[''][0])
-
-        # Get descriptors, load existing index, begin brute force matching
-
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write(str(result))
+        self.wfile.close()
 
 def run_on(port):
     print("Starting a server on port %i" % port)
