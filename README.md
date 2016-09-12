@@ -28,7 +28,7 @@ Upload a single file and get results `curl -X POST  --data-binary @images/c.jpg 
 Results will come back as a JSON object where `id` is the ID sent from curl (via load-all-images.sh) and `d` is the number of _descriptiors_ out of 200 that match.
 
 
-In this example, the 8 images takes about 1.4 seconds to check, most of that time (95%?) is due to the unpickle
+In this example, the 8 images takes about 1.4 seconds to check, probably 5ms extra per image
 
 ```
 {"results":[...], "time":1480.000}
@@ -42,6 +42,13 @@ Example:
 
 The goal eventually is to be able to scan 10,000+ images in under 500ms (or less!)
 
+
+```
+
+127.0.0.1 - - [12/Sep/2016 15:50:07] "PUT /images/d.jpg HTTP/1.1" 200 -
+-- GOT POST--
+>>> Actual time spent matching 126.889893 ms
+```
 
 ## Credits
 

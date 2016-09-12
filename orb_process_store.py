@@ -1,8 +1,8 @@
 from skimage import data
 from skimage import transform as tf
 from skimage import io
-from skimage.feature import (match_descriptors, corner_harris,
-                             corner_peaks, ORB, plot_matches)
+from skimage.feature import (match_descriptors, corner_harris, corner_peaks, ORB, plot_matches)
+import time
 from skimage.color import rgb2gray
 from skimage import filters
 from StringIO import StringIO
@@ -65,16 +65,19 @@ def search(img_str):
     descriptor_extractor = ORB(n_keypoints=keypoints, fast_n=122)
     descriptor_extractor.detect_and_extract(img1)
 
-
     p = pickle.load(open("data.bin", "rb"))
+
     matches = []
 
+    ms = time.time() * 1000.0
     # Build a list dict based on the number of matches
     # @todo having to scan the whole stored dataset doesnt feel right?
     for entry in p:
         x = match_descriptors(descriptor_extractor.descriptors, entry['descriptors'], cross_check=True)
         if(len(x)> 65):
             matches.append({'id': entry['id'], 'd' : len(x)})
+    mse = time.time() * 1000.0
 
+    print ">>> Actual time spent matching %2f ms" %  (mse-ms)
     return matches
 
