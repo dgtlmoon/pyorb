@@ -1,6 +1,6 @@
 # pyorb
 
-Experimental Python ORB search server based on OpenCV2
+Experimental Python ORB image feature extraction and similar image search server based on SciKit's ORB functionality.
 
 This project is mostly just for personal research and learning.
 
