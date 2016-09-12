@@ -25,7 +25,8 @@ Use curl to upload all images in `./load-all-images.sh`
 
 Upload a single file and get results `curl -X POST  --data-binary @images/c.jpg http://localhost:8080`
 
-Results will come back as a JSON object
+Results will come back as a JSON object where `id` is the ID sent from curl (via load-all-images.sh) and `d` is the number of _descriptiors_ out of 200 that match.
+
 ```
 [{"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}]
 ```
