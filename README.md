@@ -16,7 +16,7 @@ Inspiration taken from the http://pastec.io project.
 ### Features
   - SciKit ORB ( oriented FAST detection method and the rotated BRIEF descriptors. ) matching http://scikit-image.org/docs/dev/auto_examples/plot_orb.html
   - Records a tag against each image uploaded (as it is in the list) so you can reference by an arbitrary tag
-  
+
 ## Usage
 
 Start the server `python ./http-server.py`
@@ -39,3 +39,5 @@ Example:
 ```
 {"results": [{"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}, {"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}, {"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}], "time": 1486.422607421875}
 ```
+
+The goal eventually is to be able to scan 10,000+ images in under 500ms (or less!)
