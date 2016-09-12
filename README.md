@@ -44,10 +44,9 @@ The goal eventually is to be able to scan 10,000+ images in under 500ms (or less
 
 
 ```
-
-127.0.0.1 - - [12/Sep/2016 15:50:07] "PUT /images/d.jpg HTTP/1.1" 200 -
 -- GOT POST--
->>> Actual time spent matching 126.889893 ms
+>>> Actual time spent matching 135.257812 ms
+127.0.0.1 - - [12/Sep/2016 15:50:16] "POST / HTTP/1.1" 200 -
 ```
 
 ## Credits
