@@ -27,6 +27,15 @@ Upload a single file and get results `curl -X POST  --data-binary @images/c.jpg 
 
 Results will come back as a JSON object where `id` is the ID sent from curl (via load-all-images.sh) and `d` is the number of _descriptiors_ out of 200 that match.
 
+
+In this example, the 8 images takes about 1.4 seconds to check, most of that time (95%?) is due to the unpickle
+
 ```
-[{"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}]
+{"results":[...], "time":1480.000}
+```
+
+Example:
+
+```
+{"results": [{"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}, {"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}, {"id": "/images/g.jpg", "d": 78}, {"id": "/images/f.jpg", "d": 70}, {"id": "/images/h.jpg", "d": 68}, {"id": "/images/a.jpg", "d": 72}, {"id": "/images/c.jpg", "d": 200}, {"id": "/images/d.jpg", "d": 69}], "time": 1486.422607421875}
 ```

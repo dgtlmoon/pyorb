@@ -76,5 +76,5 @@ def search(img_str):
         if(len(x)> 65):
             matches.append({'id': entry['id'], 'd' : len(x)})
 
-    return json.dumps(matches)
+    return matches
 

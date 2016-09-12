@@ -5,8 +5,8 @@
 import signal
 from threading import Thread
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
-
-import urlparse
+import time
+import json
 import orb_process_store
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -23,12 +23,15 @@ class MyHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         print "-- GOT POST--"
-        result = orb_process_store.search(self.rfile.read(int(self.headers.getheader('Content-Length'))))
+        ms = time.time() * 1000.0
+
+        orb_result = orb_process_store.search(self.rfile.read(int(self.headers.getheader('Content-Length'))))
+        mse = time.time() * 1000.0
 
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        self.wfile.write(str(result))
+        self.wfile.write(str(json.dumps({'time': mse - ms, 'results': orb_result})))
         self.wfile.close()
 
 def run_on(port):
